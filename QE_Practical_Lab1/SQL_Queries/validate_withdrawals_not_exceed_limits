@@ -1,0 +1,6 @@
+--Validate that withdrawals do not exceed daily limit 
+SELECT UserID, SUM(Amount) AS TotalWithdrawn 
+FROM Transactions
+WHERE TransactionType = 'CASH_WITHDRAWAL' 
+AND CAST(Timestamp AS DATE) = CAST(GETDATE() AS DATE)
+GROUP BY UserID HAVING SUM(Amount) > 10000; 

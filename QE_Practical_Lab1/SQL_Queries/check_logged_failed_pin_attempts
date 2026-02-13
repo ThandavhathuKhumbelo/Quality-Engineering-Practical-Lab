@@ -1,0 +1,4 @@
+--Check that failed PIN attempts are logged in the audit table
+ SELECT * FROM AuditLogs 
+WHERE UserID = 102 AND Action = "PIN_ATTEMPT"
+ ORDER BY Timestamp DESC; 
